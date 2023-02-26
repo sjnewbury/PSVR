@@ -1,0 +1,33 @@
+From 87c15fe29a9c8b258ead5ce8e049555c63e06620 Mon Sep 17 00:00:00 2001
+From: Steven Newbury <steve@snewbury.org.uk>
+Date: Thu, 8 Apr 2021 15:17:33 +0100
+Subject: [PATCH] drm/edid: Mark Sony Playstation VR connection box as
+ non-desktop
+
+The original argument for not doing so is the HDMI passthrough
+to the TV.  This however, doesn't really make sense with a PC
+where you're much more likely to use a seperate connection to
+another display.
+
+Convert PSVR connection box quirk to EDID_QUIRK macro
+---
+ drivers/gpu/drm/drm_edid.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index b36abfa91581..d43b055cea12 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -226,6 +226,9 @@ static const struct edid_quirk {
+ 	/* Sony PlayStation VR Headset */
+ 	EDID_QUIRK('S', 'N', 'Y', 0x0704, EDID_QUIRK_NON_DESKTOP),
+ 
++	/* Sony PlayStation VR Headset (connection box) */
++	EDID_QUIRK('S', 'N', 'Y', 0xb403, EDID_QUIRK_NON_DESKTOP),
++
+ 	/* Sensics VR Headsets */
+ 	EDID_QUIRK('S', 'E', 'N', 0x1019, EDID_QUIRK_NON_DESKTOP),
+ 
+-- 
+2.39.1
+
