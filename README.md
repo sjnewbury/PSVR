@@ -1,4 +1,4 @@
-# PSVR
+# PSVR - Support for 90 and 120Hz
 
 Example for use:
 
